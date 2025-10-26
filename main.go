@@ -38,7 +38,7 @@ type TerminalSession struct {
 }
 
 var appConfig = &AppConfig{
-	AppsDirectory: "./terminal-apps",
+	AppsDirectory: "./terminal-apps-exe",
 	AllowedApps: map[string]string{
 		"tradingcardsearch": "Search for trading cards",
 		"testapp":           "App to test if terminal is working when running an app",
@@ -204,18 +204,13 @@ func (s *TerminalSession) handleInput(input string) {
 	ptmx := s.ptmx
 	s.mu.Unlock()
 
-	log.Printf("Handle Input has been called with: %q, PTMX exists: %v", input, ptmx != nil)
 	if ptmx != nil {
-		b, err := ptmx.Write([]byte(input))
+		_, err := ptmx.Write([]byte(input))
 		if err != nil {
 			log.Printf("Error writing to PTY: %v", err)
-		} else {
-			log.Printf("Wrote %d bytes to PTY.", b)
 		}
 		return
 	}
-
-	log.Printf("No PTY is active at this time. Handling as shell input")
 
 	for _, char := range input {
 		switch char {
@@ -368,8 +363,6 @@ func (s *TerminalSession) handleResize(resize map[string]any) {
 	})
 	if err != nil {
 		log.Printf("Error resizing PTY: %v", err)
-	} else {
-		log.Printf("Terminal resized to %dx%d", uint16(cols), uint16(rows))
 	}
 }
 

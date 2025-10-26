@@ -31,3 +31,5 @@ go.work.sum
 # .idea/
 # .vscode/
 terminal-apps-exe/
+
+**/.DS_Store
