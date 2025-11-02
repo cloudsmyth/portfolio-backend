@@ -1,4 +1,4 @@
-module github.com/cloudsmyth/mtg-go-search
+module github.com/cloudsmyth/tradingcardsearch
 
 go 1.25.1
 

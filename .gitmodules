@@ -1,3 +1,0 @@
-[submodule "terminal-apps/tradingcardsearch"]
-	path = terminal-apps/tradingcardsearch
-	url = https://github.com/cloudsmyth/card-search-go
