@@ -3,12 +3,12 @@ module github.com/cloudsmyth/portfolio-backend
 go 1.25.2
 
 require (
+	github.com/creack/pty v1.1.24
 	github.com/gorilla/websocket v1.5.3
 	github.com/labstack/echo/v4 v4.13.4
 )
 
 require (
-	github.com/creack/pty v1.1.24 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
