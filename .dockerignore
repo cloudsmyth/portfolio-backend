@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+README.md
+docs/
+
+# Development
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test files
+*_test.go
+test/
+tests/
+
+# Build artifacts
+bin/
+tmp/
+*.exe
+*.test
+
+# Railway specific (not needed for Fly.io)
+railway.toml
+.railwayignore
+
+# Node/Frontend (if any)
+node_modules/
