@@ -52,7 +52,7 @@ func HandleContact(c echo.Context) error {
 	req.Message = strings.TrimSpace(req.Message)
 
 	if err := sendEmail(req); err != nil {
-		log.Printf("Error sendign email: %v", err)
+		log.Printf("Error sending email: %v", err)
 		return c.JSON(http.StatusInternalServerError, ContactResponse{
 			Error: "Failed to send message",
 		})

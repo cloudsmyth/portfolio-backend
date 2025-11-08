@@ -7,11 +7,14 @@ import (
 	"os"
 
 	"github.com/cloudsmyth/portfolio-backend/handlers"
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
+	godotenv.Load()
+
 	terminalConfig := &handlers.TerminalConfig{
 		AppsDirectory: "./terminal-apps-exe",
 		AllowedApps: map[string]string{
