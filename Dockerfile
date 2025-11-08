@@ -19,7 +19,7 @@ RUN mkdir -p terminal-apps-exe && \
       if [ -d "$app" ] && [ -f "$app/main.go" ]; then \
         echo "Building $(basename $app)..." && \
         cd "$app" && \
-        CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -trimpath -o ../terminal-apps-exe/$(basename $app) . && \
+        CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH: -amd64} go build -ldflags="-s -w" -trimpath -o ../terminal-apps-exe/$(basename $app) . && \
         cd ..; \
       fi; \
     done
