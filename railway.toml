@@ -1,0 +1,23 @@
+[build]
+builder = "nixpacks"
+buildCommand = """
+  mkdir -p terminal-apps-exe && \
+  for app in terminal-apps/*; do \
+    if [ -d "$app" ] && [ -f "$app/main.go" ]; then \
+      echo "Building $(basename $app)..." && \
+      cd "$app" && \
+      go build -o ../../terminal-apps-exe/$(basename $app) . && \
+      cd ../..; \
+    fi; \
+  done && \
+  echo "Building main server..." && \
+  go build -o bin/main
+"""
+
+[deploy]
+startCommand = "bin/main"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[env]
+GO_VERSION = "1.23"

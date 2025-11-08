@@ -19,7 +19,9 @@ func main() {
 			"testapp":           "App to test if terminal is working when running an app",
 		},
 		AllowedOrigins: map[string]bool{
-			"http://localhost:5173": true,
+			"http://localhost:5173":       true,
+			"https://spenceralan.dev":     true,
+			"https://www.spenceralan.dev": true,
 		},
 		MaxConcurrent: 1,
 	}
@@ -35,6 +37,8 @@ func main() {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{
 			"http://localhost:5173",
+			"https://spenceralan.dev",
+			"https://www.spenceralan.dev",
 		},
 		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodOptions},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
