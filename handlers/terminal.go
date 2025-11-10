@@ -204,8 +204,8 @@ func (s *TerminalSession) executeApp(appName string, args []string) {
 	)
 
 	ptmx, err := pty.StartWithSize(cmd, &pty.Winsize{
-		Rows: 24,
-		Cols: 80,
+		Rows: 30,
+		Cols: 120,
 	})
 	if err != nil {
 		s.sendOutput(fmt.Sprintf("Error starting app: %v\n", err))
