@@ -16,13 +16,17 @@ COPY . .
 # Build terminal apps first
 RUN mkdir -p terminal-apps-exe && \
     for app in terminal-apps/*; do \
-      if [ -d "$app" ] && [ -f "$app/main.go" ]; then \
-        echo "Building $(basename $app)..." && \
-        cd "$app" && \
-        CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH: -amd64} go build -ldflags="-s -w" -trimpath -o ../terminal-apps-exe/$(basename $app) . && \
-        cd ..; \
-      fi; \
-    done
+        if [ -d "$app" ] && [ -f "$app/main.go" ]; then \
+            appname=$(basename "$app"); \
+            echo "Building $appname for Linux amd64..."; \
+            (cd "$app" && \
+             env GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build \
+                -ldflags="-s -w" \
+                -trimpath \
+                -o "/app/terminal-apps-exe/$appname" .); \
+        fi; \
+    done && ls -lah terminal-apps-exe
+
 
 # Build main server
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -trimpath -o /app/server .

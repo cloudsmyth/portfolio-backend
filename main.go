@@ -20,6 +20,7 @@ func main() {
 		AllowedApps: map[string]string{
 			"tradingcardsearch": "Search for trading cards",
 			"testapp":           "App to test if terminal is working when running an app",
+			"kanban":            "Classic kanban style app",
 		},
 		AllowedOrigins: map[string]bool{
 			"http://localhost:5173":       true,
